@@ -155,8 +155,8 @@ def _validate_response(url, response):
     """Validates that the response from Google was successful."""
     if response['status'] not in [GooglePlaces.RESPONSE_STATUS_OK,
                                   GooglePlaces.RESPONSE_STATUS_ZERO_RESULTS]:
-        error_detail = ('Request to URL %s failed with response code: %s' %
-                        (url, response['status']))
+        error_detail = ('Request to URL %s failed with response code "%s" and message: %s' %
+                        (url, response['status'], response.get('error_message')))
         raise GooglePlacesError(error_detail)
 
 
